@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <wiringPi.h>
 
 using namespace cv;
 using namespace std;
@@ -83,14 +84,19 @@ void MainWindow::on_startBtn_REC_pressed() {
     int fourcc = VideoWriter::fourcc('H','2','6','4');
     double fps = 10;
     int delay = cvRound(1000.0 / fps);
-
     VideoWriter writer = VideoWriter(rec_path, fourcc, fps, size);
+    
+    wiringPiSetup();
+    pinMode(26, OUTPUT);
+
     while(1) {
         Mat frame_rec;
         video >> frame_rec;
         writer << frame_rec;
         imshow("rec", frame_rec);
+	digitalWrite(26, 1);
         if(waitKey(delay) >= 0) {
+	    digitalWrite(26, 0);
             break;
         }
     }
@@ -101,13 +107,17 @@ void MainWindow::on_startBtn_REC_pressed() {
 }
 
 void MainWindow::on_startBtn_CAP_pressed() {
+    wiringPiSetup();
+    pinMode(27, OUTPUT);
     string cap_path = ui->PATH_CAP->text().toStdString();
     Mat frame_cap;
     video >> frame_cap;
     imwrite(cap_path, frame_cap);
     Mat img = imread(cap_path);
+    digitalWrite(27, 1);
     imshow("captured image", img);
     waitKey(0);
+    digitalWrite(27, 0);
     destroyWindow("captured image");
 }
 
