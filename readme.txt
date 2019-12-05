@@ -1,6 +1,6 @@
 after make
 
-if there are errors about "ui_mainwindow.h"
+if there are errors on "ui_mainwindow.h"
 
 then annotate related lines in "u_mainwindow.h".
 
