@@ -16,7 +16,3 @@ after that, make again (do not make clean)
 ![07](./pic/07.png)
 ![08](./pic/08.png)
 ![09](./pic/09.png)
-<img id="10" src="./pic/10.jpg" class="rotate180">
-<img id="11" src="./pic/11.jpg" class="rotate180">
-![10](./pic/10.jpg)
-![11](./pic/11.jpg)
