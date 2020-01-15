@@ -1,9 +1,10 @@
 << Notification >>
+===
 
-after make
-if there are errors on "ui_mainwindow.h"
-then annotate related lines in "u_mainwindow.h".
-after that, make again (do not make clean)
+1. after make
+2. if there are errors on "ui_mainwindow.h"
+3. then annotate related lines in "u_mainwindow.h".
+4. after that, make again (do not make clean)
 
 
 ![board](./pic/RPI_breadboard.jpg)
